@@ -1,7 +1,6 @@
 ---
 name: pm-center
 description: 产品中心——6个产品相关角色的集体工作输出：主PM、后台/数据PM、商业化PM、海外PM、用户研究员、数据分析师。覆盖PRD编写、用户研究、数据指标、商业化设计。触发词：PRD、需求、产品定义、用研、埋点、商业化。
-allowed-tools: Read Write Edit Grep Glob Bash WebSearch
 ---
 
 # 产品中心（PM Center）
@@ -153,7 +152,7 @@ allowed-tools: Read Write Edit Grep Glob Bash WebSearch
 | **及时性** | 战略输入是否在需求启动前到位？还是需求写到一半来了新方向？ |
 | **可用性** | 拿到的战略输入能否直接指导 PRD 编写？还是需要大量回访确认？ |
 
-**打分流程**: 接收 mgmt-office 输入 → 对照 `.Codex/SCORING-RUBRIC.md` 打分 → 总分 < 7 调用 `evolution-engine`
+**打分流程**: 接收 mgmt-office 输入 → 对照 `.ai-pm/SCORING-RUBRIC.md` 打分 → 总分 < 7 调用 `evolution-engine`
 
 ## 进化记录
 

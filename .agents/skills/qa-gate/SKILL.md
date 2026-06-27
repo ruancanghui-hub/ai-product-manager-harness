@@ -1,7 +1,6 @@
 ---
 name: qa-gate
 description: 测试中心——6个测试角色的集体工作输出：功能测试、自动化测试、性能测试、兼容性测试、安全测试、合规测试。质量把关不放松。触发词：测试、提测、质量、兼容、性能测试、安全测试、合规。
-allowed-tools: Read Write Edit Grep Glob Bash
 ---
 
 # 测试中心（QA Gate）
@@ -162,7 +161,7 @@ allowed-tools: Read Write Edit Grep Glob Bash
 | **及时性** | 是否按提测日交付？延期是否提前通知？ |
 | **可用性** | 构建包能否直接进入测试？冒烟是否通过？ |
 
-**打分流程**: 接收上下游交付物 → 对照 `.Codex/SCORING-RUBRIC.md` 分别打分 → 任一方总分 < 7 调用 `evolution-engine`
+**打分流程**: 接收上下游交付物 → 对照 `.ai-pm/SCORING-RUBRIC.md` 分别打分 → 任一方总分 < 7 调用 `evolution-engine`
 
 ## 进化记录
 

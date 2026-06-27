@@ -1,7 +1,6 @@
 ---
 name: evolution-engine
 description: 自进化引擎——下游给上游交付物打分，不及格自动分析根因、修改对应SKILL、记录改进、下次重新打分。让整个角色系统越用越好。触发词：打分、评分、进化、改进、不及格、自优化。
-allowed-tools: Read Write Edit Grep Glob
 ---
 
 # 自进化引擎（Evolution Engine）
@@ -59,7 +58,7 @@ allowed-tools: Read Write Edit Grep Glob
 1. 下游角色接收上游交付物
 2. 按 4 维度打分（1-10）
 3. 如果总分 < 7 → 进入 Step 2
-4. 如果总分 ≥ 7 → 记录分数到 `.Codex/feedback/SCORE-LOG.md`，流程结束
+4. 如果总分 ≥ 7 → 记录分数到 `.ai-pm/feedback/SCORE-LOG.md`，流程结束
 
 ### Step 2: 问题诊断
 1. 分析低分维度，定位具体问题：
@@ -82,7 +81,7 @@ allowed-tools: Read Write Edit Grep Glob
 **建议改进**: 上游 Skill 的哪个章节/流程需要怎么改？
 ```
 
-3. 写入 `.Codex/feedback/YYYY-MM-DD-<被打分skill>-score.md`
+3. 写入 `.ai-pm/feedback/YYYY-MM-DD-<被打分skill>-score.md`
 
 ### Step 3: Skill 改进（关键步骤）
 1. 读取被打分 Skill 的 `SKILL.md`
@@ -105,12 +104,12 @@ allowed-tools: Read Write Edit Grep Glob
 ### Step 4: 重打分验证
 1. 改进后的下一次交付，下游**必须重新打分**
 2. 对比改进前后分数：
-   - 分数提升 → ✅ 进化有效，记录到 `.Codex/feedback/EVOLUTION-LOG.md`
+   - 分数提升 → ✅ 进化有效，记录到 `.ai-pm/feedback/EVOLUTION-LOG.md`
    - 分数不变或下降 → ❌ 进化无效，回退修改，重新诊断
 
 ## 进化记录索引
 
-### `.Codex/feedback/FEEDBACK-INDEX.md`
+### `.ai-pm/feedback/FEEDBACK-INDEX.md`
 每个打分事件生成一条索引：
 ```markdown
 | 日期 | 打分方 | 被打分方 | 总分 | 状态 | 链接 |
@@ -119,7 +118,7 @@ allowed-tools: Read Write Edit Grep Glob
 | 2026-07-05 | dev-factory | design-studio | 8.0 | 通过 | - |
 ```
 
-### `.Codex/feedback/EVOLUTION-LOG.md`
+### `.ai-pm/feedback/EVOLUTION-LOG.md`
 每次有效进化记录一条：
 ```markdown
 | 日期 | 被改进Skill | 改进前均分 | 改进后均分 | 改进内容摘要 |
@@ -131,7 +130,7 @@ allowed-tools: Read Write Edit Grep Glob
 
 每 3 个版本或用户说「做质量审计」时：
 
-1. 扫描 `.Codex/feedback/SCORE-LOG.md`
+1. 扫描 `.ai-pm/feedback/SCORE-LOG.md`
 2. 找出：
    - **最低分 Skill** → 重点改进
    - **分数下降趋势的 Skill** → 预警
@@ -156,10 +155,10 @@ allowed-tools: Read Write Edit Grep Glob
 ## 输出要求
 
 本 Skill 执行后必须产出：
-1. **评分记录** — `.Codex/feedback/SCORE-LOG.md` 更新
-2. **诊断报告** — `.Codex/feedback/YYYY-MM-DD-<skill>-score.md`（如不及格）
+1. **评分记录** — `.ai-pm/feedback/SCORE-LOG.md` 更新
+2. **诊断报告** — `.ai-pm/feedback/YYYY-MM-DD-<skill>-score.md`（如不及格）
 3. **Skill 改进** — 对应 `SKILL.md` 已更新（如不及格）
-4. **进化记录** — `.Codex/feedback/EVOLUTION-LOG.md` 更新（改进有效后）
+4. **进化记录** — `.ai-pm/feedback/EVOLUTION-LOG.md` 更新（改进有效后）
 
 ## 验收标准
 

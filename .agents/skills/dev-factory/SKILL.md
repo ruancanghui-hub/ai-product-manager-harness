@@ -1,7 +1,6 @@
 ---
 name: dev-factory
 description: 研发中心——15个技术角色的集体工作输出：iOS/Android/跨端/鸿蒙开发、后端/DBA/大数据、架构师、音视频、安全、算法、DevOps、编译打包、测开。把设计和需求写成可运行代码。触发词：开发、编码、架构、iOS、Android、后端、DevOps、算法。
-allowed-tools: Read Write Edit MultiEdit Grep Glob Bash
 ---
 
 # 研发中心（Dev Factory）
@@ -205,7 +204,7 @@ allowed-tools: Read Write Edit MultiEdit Grep Glob Bash
 | **及时性** | 设计稿是否在开发启动前交付？变更是否同步更新？ |
 | **可用性** | 开发能否直接按设计稿实现？还是需要自创布局？ |
 
-**打分流程**: 接收上下游交付物 → 对照 `.Codex/SCORING-RUBRIC.md` 分别打分 → 任一方总分 < 7 调用 `evolution-engine`
+**打分流程**: 接收上下游交付物 → 对照 `.ai-pm/SCORING-RUBRIC.md` 分别打分 → 任一方总分 < 7 调用 `evolution-engine`
 
 ## 进化记录
 

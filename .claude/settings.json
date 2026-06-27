@@ -6,7 +6,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "python3 ${CLAUDE_PROJECT_DIR}/.claude/hooks/session-phase-check",
+            "command": "node .claude/hooks/session-phase-check.js",
             "timeout": 30
           }
         ]
@@ -17,7 +17,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "python3 ${CLAUDE_PROJECT_DIR}/.claude/hooks/dispatch-hint",
+            "command": "node .claude/hooks/dispatch-hint.js",
             "timeout": 10
           }
         ]
@@ -29,7 +29,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "python3 ${CLAUDE_PROJECT_DIR}/.claude/hooks/quality-gate-reminder",
+            "command": "node .claude/hooks/quality-gate-reminder.js",
             "timeout": 30
           }
         ]

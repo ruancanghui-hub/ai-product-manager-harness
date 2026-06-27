@@ -1,7 +1,6 @@
 ---
 name: mgmt-office
 description: 管理中枢——3个管理角色的集体工作输出：PMO项目经理、技术负责人TL、部门总监。统筹进度、把控质量、对最终结果负责。触发词：管理、排期、资源、战略、OKR、团队、招聘、决策。
-allowed-tools: Read Write Edit Grep Glob Bash
 ---
 
 # 管理中枢（Management Office）
@@ -136,7 +135,7 @@ allowed-tools: Read Write Edit Grep Glob Bash
 | **及时性** | 状态报告是否按时提交？延期风险是否提前预警而非事后通知？ |
 | **可用性** | 状态报告能否直接用于决策和向上汇报？还是需要大量追问？ |
 
-**打分流程**: 接收团队状态报告 → 对照 `.Codex/SCORING-RUBRIC.md` 打分 → 任一方总分 < 7 调用 `evolution-engine`
+**打分流程**: 接收团队状态报告 → 对照 `.ai-pm/SCORING-RUBRIC.md` 打分 → 任一方总分 < 7 调用 `evolution-engine`
 
 ## 进化记录
 

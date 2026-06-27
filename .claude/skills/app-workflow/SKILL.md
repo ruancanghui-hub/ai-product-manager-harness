@@ -1,7 +1,6 @@
 ---
 name: app-workflow
 description: 全链路流水线——从产品立项到上线运营的完整APP开发流水线，按9个阶段依次调用对应角色Skill。触发词：全流程、从零开始、立项、完整开发、发布上线、新项目。
-allowed-tools: Read Write Edit Grep Glob Bash
 ---
 
 # 全链路流水线（App Workflow）
@@ -259,7 +258,7 @@ Phase 8: 复盘迭代 ←── Phase 7: 运营 ←── Phase 6: 发布 ←─
 3. **质量门不通过** → 当前阶段返工，直到通过
 4. **用户要求跳过某阶段** → 必须明确告知风险，记录在案，允许继续
 5. **阶段间的 Skill 调用** → 每个 Skill 启动时检查输入是否满足最低要求
-6. **每个阶段结束时** → 下游对上游交付物打分（参照 `.claude/SCORING-RUBRIC.md`），不及格触发 `evolution-engine`
+6. **每个阶段结束时** → 下游对上游交付物打分（参照 `.ai-pm/SCORING-RUBRIC.md`），不及格触发 `evolution-engine`
 
 ## 自进化打分节点（嵌入流水线）
 

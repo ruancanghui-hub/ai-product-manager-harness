@@ -1,7 +1,6 @@
 ---
 name: design-studio
 description: 设计中心——5个设计角色的集体工作输出：UX交互、UI视觉、动效、品牌插画、多端适配。把产品需求变成可落地的界面设计。触发词：设计、交互、UI、视觉、动效、适配。
-allowed-tools: Read Write Edit Grep Glob
 ---
 
 # 设计中心（Design Studio）
@@ -161,7 +160,7 @@ allowed-tools: Read Write Edit Grep Glob
 | **及时性** | PRD 是否按排期交付？变更是否提前通知？ |
 | **可用性** | PRD 能否直接指导交互设计？还是需要频繁回访 PM 澄清？ |
 
-**打分流程**: 接收 pm-center 的 PRD → 对照 `.Codex/SCORING-RUBRIC.md` 打分 → 总分 < 7 调用 `evolution-engine`
+**打分流程**: 接收 pm-center 的 PRD → 对照 `.ai-pm/SCORING-RUBRIC.md` 打分 → 总分 < 7 调用 `evolution-engine`
 
 ## 进化记录
 

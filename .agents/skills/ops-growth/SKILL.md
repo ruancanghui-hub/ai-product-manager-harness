@@ -1,7 +1,6 @@
 ---
 name: ops-growth
 description: 运营与商业化中心——7个角色的集体工作输出：用户/内容/渠道运营、商业化、法务合规、内容审核、客服。让产品活下去、用户增长、赚到钱。触发词：运营、增长、投放、商业化、法务、审核、客服、ASO。
-allowed-tools: Read Write Edit Grep Glob Bash WebSearch
 ---
 
 # 运营与商业化中心（Ops & Growth）
@@ -155,7 +154,7 @@ allowed-tools: Read Write Edit Grep Glob Bash WebSearch
 | **及时性** | 配置文档是否在上线前到位？ |
 | **可用性** | 运营能否直接按文档操作，不需开发陪同？ |
 
-**打分流程**: 接收上下游交付物 → 对照 `.Codex/SCORING-RUBRIC.md` 分别打分 → 任一方总分 < 7 调用 `evolution-engine`
+**打分流程**: 接收上下游交付物 → 对照 `.ai-pm/SCORING-RUBRIC.md` 分别打分 → 任一方总分 < 7 调用 `evolution-engine`
 
 ## 进化记录
 
