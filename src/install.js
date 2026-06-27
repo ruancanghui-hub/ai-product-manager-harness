@@ -2,9 +2,13 @@ import { cp, lstat, mkdir, mkdtemp, readFile, readlink, rename, rm, symlink } fr
 import os from 'node:os';
 import path from 'node:path';
 import { createHash } from 'node:crypto';
+import { execFile } from 'node:child_process';
+import { promisify } from 'node:util';
 
 import { PACKAGE_ROOT, SKILLS_ROOT, TEMPLATES_ROOT } from './content.js';
 import { createInstallPlan } from './plan.js';
+
+const runFile = promisify(execFile);
 
 export class InstallConflictError extends Error {
   constructor(conflicts) {
@@ -80,6 +84,7 @@ export async function installProject({
   link = false,
   force = false,
   git = true,
+  gitCommand = 'git',
 }) {
   const plan = createInstallPlan(root, agents);
   const items = [...plan.skillTargets, ...plan.templates];
@@ -124,13 +129,21 @@ export async function installProject({
     await rm(backupRoot, { recursive: true, force: true });
   }
 
+  const warnings = [];
+  if (git && !(await pathInfo(path.join(plan.root, '.git')))) {
+    try {
+      await runFile(gitCommand, ['init'], { cwd: plan.root });
+    } catch (error) {
+      warnings.push(`Git initialization skipped: ${error.message}`);
+    }
+  }
+
   return {
     root: plan.root,
     agents: [...agents],
     mode: link ? 'link' : 'copy',
     created,
-    warnings: git ? [] : [],
+    warnings,
     packageRoot: PACKAGE_ROOT,
   };
 }
-

@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { mkdtemp, mkdir, readFile, readdir, symlink, writeFile } from 'node:fs/promises';
+import { access, mkdtemp, mkdir, readFile, readdir, symlink, writeFile } from 'node:fs/promises';
 import os from 'node:os';
 import path from 'node:path';
 
@@ -94,3 +94,25 @@ test('a broken existing skill link is a conflict', async () => {
   );
 });
 
+test('git initialization is optional', async () => {
+  const withoutGit = await temporaryRoot();
+  await installProject({ root: withoutGit, agents: ['codex'], git: false });
+  await assert.rejects(access(path.join(withoutGit, '.git')), /ENOENT/);
+
+  const withGit = await temporaryRoot();
+  await installProject({ root: withGit, agents: ['codex'], git: true });
+  await access(path.join(withGit, '.git'));
+});
+
+test('missing git produces a warning without rolling back the project', async () => {
+  const root = await temporaryRoot();
+  const result = await installProject({
+    root,
+    agents: ['codex'],
+    git: true,
+    gitCommand: 'definitely-not-a-git-executable',
+  });
+  assert.equal(result.warnings.length, 1);
+  assert.match(result.warnings[0], /Git initialization skipped/);
+  await access(path.join(root, '.agents/skills'));
+});
