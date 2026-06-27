@@ -1,0 +1,39 @@
+{
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "Write|Edit|MultiEdit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 '/Users/orico/Documents/01_project/12_ai_pm2/.codex/hooks/quality-gate-reminder'",
+            "timeout": 30
+          }
+        ]
+      }
+    ],
+    "SessionStart": [
+      {
+        "matcher": "startup|resume|clear|compact",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 '/Users/orico/Documents/01_project/12_ai_pm2/.codex/hooks/session-phase-check'",
+            "timeout": 30
+          }
+        ]
+      }
+    ],
+    "UserPromptSubmit": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 '/Users/orico/Documents/01_project/12_ai_pm2/.codex/hooks/dispatch-hint'",
+            "timeout": 10
+          }
+        ]
+      }
+    ]
+  }
+}

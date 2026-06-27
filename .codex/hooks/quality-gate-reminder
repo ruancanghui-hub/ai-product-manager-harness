@@ -1,0 +1,36 @@
+#!/usr/bin/env python3
+"""文件编辑后提醒检查对应阶段质量门。"""
+import os, sys, json
+
+GATE_MAP = [
+    (["PRD.md", "Product-Spec.md"], "pm-center", "PRD 评审是否仍通过？下游是否需要同步？"),
+    (["设计规范", "Design-Brief", "design-system"], "design-studio", "设计评审是否仍通过？"),
+    (["技术方案", "API定义", "数据库变更"], "dev-factory", "技术方案评审是否仍通过？"),
+    (["测试用例", "测试计划"], "qa-gate", "测试覆盖是否仍完整？"),
+    (["用户协议", "隐私政策"], "ops-growth", "法务审核是否仍通过？"),
+    (["PROJECT-PHASE.md", "DEV-PLAN.md"], "chief-orchestrator", "阶段计划依赖是否需同步？"),
+]
+
+def main():
+    output = {"hookName": "quality-gate-reminder", "decision": "continue"}
+    try:
+        tool_input = os.environ.get("CLAUDE_TOOL_INPUT", "")
+        file_path = ""
+        if tool_input:
+            try:
+                data = json.loads(tool_input)
+                file_path = data.get("file_path", "")
+            except:
+                file_path = tool_input
+        if file_path:
+            for patterns, skill, reminder in GATE_MAP:
+                if any(p.lower() in file_path.lower() for p in patterns):
+                    names = {"pm-center": "产品中心", "design-studio": "设计中心", "dev-factory": "研发中心", "qa-gate": "测试中心", "ops-growth": "运营与商业化", "chief-orchestrator": "总调度"}
+                    output["systemMessage"] = f"质量门提醒: 修改了 {names.get(skill, skill)} 关键产出物。确认: {reminder}"
+                    break
+    except:
+        pass
+    print(json.dumps(output, ensure_ascii=False))
+
+if __name__ == "__main__":
+    main()
