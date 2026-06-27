@@ -1,0 +1,30 @@
+#!/usr/bin/env python3
+import os, sys, json, re
+
+SKILL_KEYWORDS = {
+    "app-workflow": ["全流程", "从零开始", "完整开发", "立项", "新项目"],
+    "chief-orchestrator": ["调度", "协调", "瓶颈", "质量门", "延期", "卡住了"],
+    "pm-center": ["PRD", "产品需求", "用户研究", "埋点", "数据指标", "商业化", "用户画像"],
+    "design-studio": ["设计稿", "交互", "UI", "视觉", "动效", "Figma", "设计系统", "多端适配"],
+    "dev-factory": ["开发", "编码", "架构", "技术方案", "接口", "数据库", "CI/CD", "打包", "算法", "iOS", "Android"],
+    "qa-gate": ["测试", "提测", "Bug", "bug", "兼容", "性能", "安全扫描", "合规检查", "回归"],
+    "ops-growth": ["运营", "增长", "投放", "ASO", "法务", "内容审核", "客服", "隐私政策", "用户协议"],
+    "mgmt-office": ["排期", "资源分配", "OKR", "战略", "团队管理", "招聘", "预算", "决策"],
+}
+
+def main():
+    output = {"hookName": "dispatch-hint", "decision": "continue"}
+    try:
+        user_input = sys.stdin.read().strip() if not sys.stdin.isatty() else ""
+        if user_input:
+            for skill_name, keywords in SKILL_KEYWORDS.items():
+                if any(re.search(kw, user_input.lower()) for kw in keywords):
+                    names = {"app-workflow": "全链路流水线", "chief-orchestrator": "总调度", "pm-center": "产品中心", "design-studio": "设计中心", "dev-factory": "研发中心", "qa-gate": "测试中心", "ops-growth": "运营与商业化", "mgmt-office": "管理中枢"}
+                    output["systemMessage"] = f"🔀 路由建议 → {names.get(skill_name, skill_name)} ({skill_name})"
+                    break
+    except:
+        pass
+    print(json.dumps(output, ensure_ascii=False))
+
+if __name__ == "__main__":
+    main()

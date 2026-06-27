@@ -1,0 +1,50 @@
+#!/usr/bin/env python3
+"""
+会话启动 Hook —— 检查当前项目阶段并报告。
+
+读取 PROJECT-PHASE.md（如存在），向 Agent 注入当前阶段上下文。
+如果文件不存在，提示项目尚未初始化。
+"""
+
+import os
+import sys
+import json
+
+PROJECT_DIR = os.environ.get("CLAUDE_PROJECT_DIR", os.getcwd())
+PHASE_FILE = os.path.join(PROJECT_DIR, "PROJECT-PHASE.md")
+ROLES_DIR = os.path.join(PROJECT_DIR, "roles")
+
+def main():
+    output = {"hookName": "session-phase-check", "decision": "continue"}
+
+    if os.path.exists(PHASE_FILE):
+        try:
+            with open(PHASE_FILE, "r") as f:
+                first_line = f.readline().strip()
+            output["decision"] = "block"
+            output["systemMessage"] = (
+                f"📂 当前项目阶段: {first_line}\n"
+                f"   详情见: {PHASE_FILE}\n"
+                f"   进入会话后请先读取 PROJECT-PHASE.md，然后从中断处继续。"
+            )
+        except Exception as e:
+            output["systemMessage"] = f"⚠️ 读取 PROJECT-PHASE.md 失败: {e}"
+    else:
+        has_roles = os.path.isdir(ROLES_DIR)
+        if has_roles:
+            output["systemMessage"] = (
+                "📋 角色参考文档已就绪（roles/ 目录）。\n"
+                "   项目尚未初始化全链路流程。\n"
+                "   如果需要从零开始走完整 APP 开发流程，请调用 app-workflow。\n"
+                "   如果只需要某个角色的协助，请直接说明需求。"
+            )
+        else:
+            output["systemMessage"] = (
+                "🆕 新项目，尚未初始化。\n"
+                "   请描述你想做的产品，系统将从 Phase 0 立项开始推进。"
+            )
+
+    print(json.dumps(output, ensure_ascii=False))
+
+if __name__ == "__main__":
+    main()
