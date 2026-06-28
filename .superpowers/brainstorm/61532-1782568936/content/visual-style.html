@@ -1,0 +1,43 @@
+<style>
+  .style-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;margin-top:24px}
+  .style-card{border:2px solid #e8e8ee;border-radius:24px;overflow:hidden;background:white;cursor:pointer;transition:.2s;box-shadow:0 12px 30px rgba(25,28,38,.08)}
+  .style-card:hover{transform:translateY(-4px);box-shadow:0 18px 42px rgba(25,28,38,.14)}
+  .style-card.selected{border-color:#6c5ce7;box-shadow:0 0 0 4px rgba(108,92,231,.13)}
+  .preview{height:310px;display:grid;place-items:center;position:relative;overflow:hidden}
+  .preview:before,.preview:after{content:"";position:absolute;border-radius:999px;filter:blur(1px);opacity:.75}
+  .preview:before{width:180px;height:180px;left:-42px;top:-60px}.preview:after{width:140px;height:140px;right:-35px;bottom:-42px}
+  .avatar{width:178px;height:226px;position:relative;z-index:2}
+  .head{position:absolute;left:44px;top:22px;width:92px;height:100px;border-radius:46% 46% 48% 48%}
+  .hair{position:absolute;left:37px;top:10px;width:106px;height:68px;border-radius:62px 62px 30px 30px}
+  .hair:after{content:"";position:absolute;right:5px;top:34px;width:20px;height:54px;border-radius:10px}
+  .eye{position:absolute;top:70px;width:9px;height:9px;border-radius:50%;background:#263238;z-index:5}.eye.l{left:68px}.eye.r{right:69px}
+  .smile{position:absolute;left:81px;top:92px;width:18px;height:8px;border-bottom:3px solid #b44;border-radius:50%;z-index:5}
+  .body{position:absolute;left:24px;top:110px;width:132px;height:112px;border-radius:32px 32px 18px 18px}
+  .device{position:absolute;z-index:7;left:50px;top:145px;width:80px;height:58px;border-radius:8px}
+  .badge{position:absolute;z-index:8;right:20px;top:116px;width:38px;height:38px;border-radius:50%;display:grid;place-items:center;color:white;font-weight:900}
+  .copy{padding:18px 20px 22px}.copy h3{margin:0 0 7px}.copy p{margin:0;color:#686b78;line-height:1.5;font-size:14px}.tag{display:inline-block;margin-top:12px;padding:5px 9px;border-radius:999px;background:#f2f1ff;color:#5b4bd8;font-size:12px;font-weight:700}
+  .a{background:linear-gradient(145deg,#f7fbff,#e5f4ff)}.a:before,.a:after{background:#bde8ff}.a .head{background:#ffd6bd;box-shadow:inset 0 -7px 0 rgba(226,141,103,.16)}.a .hair{background:#25314d}.a .hair:after{background:#25314d}.a .body{background:#5278ff}.a .device{background:#f5f7ff;border:5px solid #293653}.a .badge{background:#ff8b72}
+  .b{background:linear-gradient(145deg,#fff9ef,#f7ead2)}.b:before,.b:after{background:#f5c58a}.b .head{background:#f0bc95;transform:rotate(-2deg)}.b .hair{background:#50372f;transform:rotate(-3deg)}.b .hair:after{background:#50372f}.b .body{background:#df6f4b;transform:rotate(1deg)}.b .device{background:#f6dfbd;border:4px solid #4d3a33;transform:rotate(-3deg)}.b .badge{background:#397c72}
+  .c{background:radial-gradient(circle at 45% 30%,#2f3068,#17182f)}.c:before,.c:after{background:#665ee8}.c .head{background:linear-gradient(145deg,#f7c5a7,#e79b78);box-shadow:0 10px 22px rgba(0,0,0,.28)}.c .hair{background:linear-gradient(145deg,#1b1934,#494270)}.c .hair:after{background:#302b53}.c .body{background:linear-gradient(145deg,#6556e8,#37c8c8);box-shadow:0 15px 28px rgba(0,0,0,.32)}.c .device{background:linear-gradient(145deg,#252847,#0e1024);border:2px solid #70e4e1;box-shadow:0 0 20px rgba(112,228,225,.35)}.c .badge{background:#ff4f8b;box-shadow:0 0 18px rgba(255,79,139,.5)}
+  @media(max-width:900px){.style-grid{grid-template-columns:1fr}.preview{height:270px}}
+</style>
+
+<h2>统一角色卡：选择整体视觉语言</h2>
+<p class="subtitle">全部 35+ 角色将保持相同头身比、镜头、背景结构和光影；每个岗位只更换服装、道具、徽章与团队色。</p>
+
+<div class="style-grid">
+  <div class="style-card" data-choice="a" onclick="toggleSelect(this)">
+    <div class="preview a"><div class="avatar"><div class="body"></div><div class="head"></div><div class="hair"></div><i class="eye l"></i><i class="eye r"></i><i class="smile"></i><div class="device"></div><div class="badge">PM</div></div></div>
+    <div class="copy"><h3>A · 清爽 2.5D 扁平</h3><p>明亮、亲和、识别快，最像现代企业产品插画；全套最稳，也最适合文档和官网。</p><span class="tag">推荐</span></div>
+  </div>
+  <div class="style-card" data-choice="b" onclick="toggleSelect(this)">
+    <div class="preview b"><div class="avatar"><div class="body"></div><div class="head"></div><div class="hair"></div><i class="eye l"></i><i class="eye r"></i><i class="smile"></i><div class="device"></div><div class="badge">UX</div></div></div>
+    <div class="copy"><h3>B · 温暖手绘绘本</h3><p>纸张肌理与略带手作感的线条，个性更强；但大批量一致性略逊于 A。</p><span class="tag">有人情味</span></div>
+  </div>
+  <div class="style-card" data-choice="c" onclick="toggleSelect(this)">
+    <div class="preview c"><div class="avatar"><div class="body"></div><div class="head"></div><div class="hair"></div><i class="eye l"></i><i class="eye r"></i><i class="smile"></i><div class="device"></div><div class="badge">DEV</div></div></div>
+    <div class="copy"><h3>C · 潮流 3D 科技感</h3><p>戏剧光、材质更丰富、视觉冲击强；适合宣传，但整套更重、更容易喧宾夺主。</p><span class="tag">强视觉</span></div>
+  </div>
+</div>
+
+<p class="subtitle" style="margin-top:22px">点击一个方案；你也可以在对话里说“以 A 为主，但用 B 的温暖配色”。</p>

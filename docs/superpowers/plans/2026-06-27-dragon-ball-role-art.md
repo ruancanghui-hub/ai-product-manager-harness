@@ -4,9 +4,11 @@
 
 **Goal:** Generate and verify 43 distinct 4K portrait illustrations that map the APP lifecycle roles to Dragon Ball characters, with an exact Chinese role name printed on every uniform.
 
-**Architecture:** The approved design spec is the source of truth for role mapping and art direction. Seven JSONL prompt manifests, one per team, feed the bundled `gpt-image-2` batch CLI; each team writes to its own output directory. Generation is followed by automated file/dimension checks and manual visual inspection of identity, anatomy, style consistency, and exact Chinese badge text.
+**Architecture:** The approved design spec is the source of truth for role mapping and art direction. Per the user's execution override, every distinct asset is generated with Codex's built-in Image 2 tool, then copied into its numbered team directory and normalized to 2160×3840. Generation is followed by automated file/dimension checks and manual visual inspection of identity, anatomy, style consistency, and Chinese badge text.
 
-**Tech Stack:** Bundled image generation CLI, OpenAI Image API with `gpt-image-2`, Python 3.9+, PNG, macOS `sips`, Codex image inspection.
+**Tech Stack:** Codex built-in Image 2, PNG, macOS `sips`, Codex image inspection.
+
+**Execution override (approved 2026-06-27):** Do not require `OPENAI_API_KEY` or the fallback CLI. Use Codex's built-in Image 2 tool. Because the built-in tool does not expose a destination size parameter, preserve the native generated image and normalize the project copy to exact 4K portrait dimensions with `sips`.
 
 ---
 
