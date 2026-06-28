@@ -5,10 +5,10 @@
 4 silly config load:file:/Users/nightelf/Documents/work/12_ai_pm2/h5-card-game/.npmrc
 5 silly config load:file:/Users/nightelf/.npmrc
 6 silly config load:file:/Users/nightelf/Documents/work/12_ai_pm2/h5-card-game/etc/npmrc
-7 verbose title npm run build
-8 verbose argv "--prefix" "h5-card-game" "run" "build"
-9 verbose logfile logs-max:10 dir:/Users/nightelf/Documents/work/12_ai_pm2/h5-card-game/.npm-cache/_logs/2026-06-28T05_11_16_501Z-
-10 verbose logfile /Users/nightelf/Documents/work/12_ai_pm2/h5-card-game/.npm-cache/_logs/2026-06-28T05_11_16_501Z-debug-0.log
+7 verbose title npm test
+8 verbose argv "--prefix" "h5-card-game" "test"
+9 verbose logfile logs-max:10 dir:/Users/nightelf/Documents/work/12_ai_pm2/h5-card-game/.npm-cache/_logs/2026-06-28T10_09_00_545Z-
+10 verbose logfile /Users/nightelf/Documents/work/12_ai_pm2/h5-card-game/.npm-cache/_logs/2026-06-28T10_09_00_545Z-debug-0.log
 11 silly logfile start cleaning logs, removing 1 files
 12 silly logfile done cleaning log files
 13 verbose cwd /Users/nightelf/Documents/work/12_ai_pm2

@@ -11,7 +11,7 @@ import "./styles.css";
 export function App({ random = Math.random }) {
   const [activeTab, setActiveTab] = useState("draw");
   const [currentCard, setCurrentCard] = useState(null);
-  const [selectedCard, setSelectedCard] = useState(null);
+  const [selectedDetail, setSelectedDetail] = useState(null);
   const [collectedIds, setCollectedIds] = useState(() => loadCollection());
 
   const collectedCards = useMemo(() => {
@@ -43,13 +43,14 @@ export function App({ random = Math.random }) {
             isCollected={currentCard ? collectedIds.includes(currentCard.id) : false}
             onDraw={handleDraw}
             onCollect={handleCollect}
+            onOpenDetails={() => setSelectedDetail({ card: currentCard, initialSection: "guide" })}
           />
         ) : null}
         {activeTab === "collection" ? (
-          <CollectionScreen cards={collectedCards} onOpen={setSelectedCard} />
+          <CollectionScreen cards={collectedCards} onOpen={(card) => setSelectedDetail({ card, initialSection: "skills" })} />
         ) : null}
         {activeTab === "skills" ? (
-          <SkillPackScreen cards={cards} collectedIds={collectedIds} onOpen={setSelectedCard} />
+          <SkillPackScreen cards={cards} collectedIds={collectedIds} onOpen={(card) => setSelectedDetail({ card, initialSection: "skills" })} />
         ) : null}
       </main>
 
@@ -59,7 +60,13 @@ export function App({ random = Math.random }) {
         onChange={setActiveTab}
       />
 
-      {selectedCard ? <CardDetail card={selectedCard} onClose={() => setSelectedCard(null)} /> : null}
+      {selectedDetail ? (
+        <CardDetail
+          card={selectedDetail.card}
+          initialSection={selectedDetail.initialSection}
+          onClose={() => setSelectedDetail(null)}
+        />
+      ) : null}
     </div>
   );
 }

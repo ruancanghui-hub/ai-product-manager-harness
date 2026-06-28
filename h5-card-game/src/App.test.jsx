@@ -10,6 +10,13 @@ describe("H5 card game", () => {
     fireEvent.click(screen.getByRole("button", { name: "抽取角色" }));
 
     expect(screen.getByText("恭喜获得新角色")).toBeInTheDocument();
+    expect(screen.getByText("岗位详细介绍")).toBeInTheDocument();
+    expect(screen.getByText("日常能帮你做什么")).toBeInTheDocument();
+    expect(screen.getByText(/产品负责人负责把业务目标/)).toBeInTheDocument();
+    fireEvent.click(screen.getByRole("button", { name: "查看完整使用指南" }));
+    expect(screen.getByText("如何让他使用这些能力")).toBeInTheDocument();
+    expect(screen.getByText("可直接使用的召唤口令")).toBeInTheDocument();
+    fireEvent.click(screen.getByRole("button", { name: "关闭" }));
     fireEvent.click(screen.getByRole("button", { name: "收入收藏" }));
     fireEvent.click(screen.getByRole("button", { name: /收藏/ }));
 
@@ -24,4 +31,3 @@ describe("H5 card game", () => {
     expect(screen.getByText("6 张角色卡")).toBeInTheDocument();
   });
 });
-

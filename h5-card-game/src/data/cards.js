@@ -1,3 +1,5 @@
+import { roleProfiles } from "./roleProfiles.js";
+
 export const teams = [
   { id: "product", name: "产品", count: 6, color: "#ef9f35", sigil: "产" },
   { id: "design", name: "设计", count: 5, color: "#50b9ef", sigil: "设" },
@@ -143,14 +145,16 @@ const descriptions = {
 };
 
 function createCard(id, character, role, teamId, imageName, skillNames) {
+  const cardId = String(id).padStart(3, "0");
   return {
-    id: String(id).padStart(3, "0"),
+    id: cardId,
     character,
     role,
     teamId,
     team: teamById[teamId],
     image: `/cards/${imageName}.jpg`,
     skills: skillNames.map((name) => ({ name, description: descriptions[name] })),
+    profile: roleProfiles[cardId],
   };
 }
 
@@ -199,4 +203,3 @@ export const cards = [
   createCard(42, "贝吉塔王", "部门总监 / 业务负责人", "management", "042-director-business-owner-king-vegeta", ["战略规划", "资源配置", "业绩负责"]),
   createCard(43, "全王", "总调度 / 版本经理", "orchestrator", "043-chief-orchestrator-zeno", ["全局节奏", "依赖治理", "质量门"]),
 ];
-

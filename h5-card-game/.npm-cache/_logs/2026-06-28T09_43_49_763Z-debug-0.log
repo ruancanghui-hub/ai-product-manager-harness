@@ -5,15 +5,15 @@
 4 silly config load:file:/Users/nightelf/Documents/work/12_ai_pm2/h5-card-game/.npmrc
 5 silly config load:file:/Users/nightelf/.npmrc
 6 silly config load:file:/usr/local/etc/npmrc
-7 verbose title npm run build
-8 verbose argv "run" "build"
-9 verbose logfile logs-max:10 dir:/Users/nightelf/Documents/work/12_ai_pm2/h5-card-game/.npm-cache/_logs/2026-06-28T05_09_39_731Z-
-10 verbose logfile /Users/nightelf/Documents/work/12_ai_pm2/h5-card-game/.npm-cache/_logs/2026-06-28T05_09_39_731Z-debug-0.log
+7 verbose title npm test src/data/cards.test.js src/App.test.jsx
+8 verbose argv "test" "--" "src/data/cards.test.js" "src/App.test.jsx"
+9 verbose logfile logs-max:10 dir:/Users/nightelf/Documents/work/12_ai_pm2/h5-card-game/.npm-cache/_logs/2026-06-28T09_43_49_763Z-
+10 verbose logfile /Users/nightelf/Documents/work/12_ai_pm2/h5-card-game/.npm-cache/_logs/2026-06-28T09_43_49_763Z-debug-0.log
 11 silly logfile start cleaning logs, removing 1 files
 12 silly logfile done cleaning log files
 13 verbose cwd /Users/nightelf/Documents/work/12_ai_pm2/h5-card-game
 14 verbose os Darwin 25.5.0
 15 verbose node v24.15.0
 16 verbose npm  v11.12.1
-17 verbose exit 0
-18 info ok
+17 verbose exit 1
+18 verbose code 1

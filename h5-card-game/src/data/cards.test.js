@@ -24,5 +24,17 @@ describe("card catalog", () => {
       orchestrator: 1,
     });
   });
-});
 
+  it("gives every role a unique and actionable usage guide", () => {
+    expect(cards.every((card) => card.profile.summary.length >= 20)).toBe(true);
+    expect(cards.every((card) => card.profile.dailyWork.length === 3)).toBe(true);
+    expect(cards.every((card) => card.profile.howToUse.length === 3)).toBe(true);
+    expect(cards.every((card) => card.profile.promptExample.length >= 30)).toBe(true);
+    expect(new Set(cards.map((card) => card.profile.promptExample)).size).toBe(43);
+
+    const uiDesigner = cards.find((card) => card.id === "008");
+    expect(JSON.stringify(uiDesigner.profile)).toMatch(/高保真/);
+    expect(JSON.stringify(uiDesigner.profile)).toMatch(/视觉规范/);
+    expect(JSON.stringify(uiDesigner.profile)).toMatch(/组件/);
+  });
+});

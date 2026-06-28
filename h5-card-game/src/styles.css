@@ -132,7 +132,7 @@ h1, h2, .role-card__caption h3 { font-family: Georgia, "Songti SC", serif; }
 .reveal-layout {
   display: grid;
   min-height: calc(100dvh - 180px);
-  grid-template-columns: minmax(270px, 400px) minmax(360px, 540px);
+  grid-template-columns: minmax(270px, 400px) minmax(520px, 680px);
   align-items: center;
   justify-content: center;
   gap: clamp(28px, 7vw, 86px);
@@ -164,6 +164,10 @@ h1, h2, .role-card__caption h3 { font-family: Georgia, "Songti SC", serif; }
 .role-card__caption button { display: flex; min-height: 38px; margin: 12px auto 0; align-items: center; justify-content: center; gap: 6px; padding: 7px 15px; border: 1px solid #694a25; border-radius: 16px; color: #382515; background: #e2bf70; font-size: 13px; font-weight: 700; cursor: pointer; }
 
 .skill-panel {
+  display: grid;
+  grid-template-columns: minmax(210px, .9fr) minmax(270px, 1.1fr);
+  align-items: start;
+  gap: 22px;
   padding: 28px;
   border: 5px solid #31261d;
   outline: 3px solid #a77b3d;
@@ -173,6 +177,9 @@ h1, h2, .role-card__caption h3 { font-family: Georgia, "Songti SC", serif; }
   background-size: 8px 8px;
   box-shadow: 0 20px 50px rgba(0, 0, 0, .5);
 }
+.skills-column,
+.guide-column { min-width: 0; }
+.guide-column .role-guide { padding-top: 0; border-top: 0; }
 .eyebrow { margin-bottom: 10px; color: #6a4b27; font-family: Georgia, "Songti SC", serif; font-size: 14px; font-weight: 800; letter-spacing: .16em; text-transform: uppercase; }
 .skill-list { display: grid; gap: 12px; margin-bottom: 22px; }
 .skill-row { display: grid; grid-template-columns: 48px 1fr; gap: 13px; align-items: center; padding: 13px; border: 1px solid rgba(103, 73, 35, .28); background: rgba(255, 248, 227, .38); }
@@ -183,6 +190,24 @@ h1, h2, .role-card__caption h3 { font-family: Georgia, "Songti SC", serif; }
 .skill-row p { margin-bottom: 0; color: #5d4b3b; font-size: 13px; line-height: 1.55; }
 .skill-panel .primary-button { width: 100%; }
 .text-button { display: block; min-height: 44px; margin: 10px auto 0; border: 0; color: #563d23; background: transparent; font-weight: 700; cursor: pointer; text-decoration: underline; text-underline-offset: 4px; }
+.role-guide { padding-top: 20px; border-top: 2px solid rgba(103, 73, 35, .32); }
+.role-guide__heading { display: flex; align-items: center; gap: 8px; margin-bottom: 10px; color: #4e351d; }
+.role-guide__heading h3 { margin: 0; font-family: Georgia, "Songti SC", serif; font-size: 20px; }
+.role-guide__summary { margin-bottom: 17px; color: #4f4032; font-size: 14px; font-weight: 600; line-height: 1.75; }
+.role-guide__section + .role-guide__section { margin-top: 20px; }
+.role-guide__section h4,
+.role-guide__prompt h4 { display: flex; align-items: center; gap: 7px; margin: 0 0 10px; color: #51391f; font-size: 14px; }
+.role-guide__section ul,
+.role-guide__section ol { display: grid; gap: 8px; margin: 0; padding: 0; list-style: none; counter-reset: guide-step; }
+.role-guide__section li { position: relative; padding-left: 25px; color: #5b4938; font-size: 13px; line-height: 1.55; }
+.role-guide__section ul li::before { content: ""; position: absolute; top: .6em; left: 5px; width: 7px; height: 7px; border-radius: 50%; background: #9b6e29; box-shadow: 0 0 0 2px rgba(155,110,41,.2); }
+.role-guide__section ol li { counter-increment: guide-step; padding-left: 34px; }
+.role-guide__section ol li::before { content: counter(guide-step); position: absolute; top: 1px; left: 0; display: grid; width: 23px; height: 23px; place-items: center; border-radius: 50%; color: #fff0c4; background: #7451a6; font-size: 11px; font-weight: 800; }
+.role-guide__prompt { margin-top: 22px; padding: 15px; border: 1px solid rgba(100, 64, 28, .42); background: rgba(104, 68, 145, .1); box-shadow: inset 4px 0 #7651c8; }
+.role-guide__prompt p { margin: 0; color: #4a3829; font-size: 13px; line-height: 1.7; }
+.guide-button { width: 100%; min-height: 46px; margin: 18px 0 12px; border: 1px solid #674a26; border-radius: 4px; color: #3f2b18; background: rgba(247, 224, 168, .72); font-weight: 800; cursor: pointer; }
+.guide-button:hover { background: #f0d28d; }
+.reveal-actions { grid-column: 1 / -1; padding-top: 4px; }
 
 .library-screen { width: min(1180px, 100%); min-height: calc(100dvh - var(--nav-height)); margin: 0 auto; padding: 30px 24px 60px; }
 .page-header { display: flex; align-items: flex-end; justify-content: space-between; margin-bottom: 24px; padding-bottom: 17px; border-bottom: 2px solid rgba(85, 58, 28, .35); }
@@ -220,9 +245,10 @@ h1, h2, .role-card__caption h3 { font-family: Georgia, "Songti SC", serif; }
 .modal { position: fixed; z-index: 50; inset: 0; display: grid; place-items: center; padding: 24px; background: rgba(4, 7, 15, .84); backdrop-filter: blur(8px); }
 .modal__panel { position: relative; display: grid; width: min(880px, 100%); max-height: calc(100dvh - 48px); grid-template-columns: minmax(240px, 330px) 1fr; gap: 34px; overflow: auto; padding: 36px; border: 4px solid #4c351e; outline: 3px solid #bf8d42; color: var(--ink); background: var(--parchment); box-shadow: 0 22px 80px rgba(0,0,0,.7); }
 .modal__close { position: absolute; z-index: 2; top: 12px; right: 12px; display: grid; width: 42px; height: 42px; place-items: center; border: 2px solid #674a2a; border-radius: 50%; color: #3b291a; background: #ead3a2; cursor: pointer; }
-.modal__content { align-self: center; }
+.modal__content { align-self: start; }
 .modal__content h2 { margin-bottom: 5px; font-size: 38px; }
 .modal__role { color: #674e34; }
+.modal__section-title { margin-top: 24px; }
 .modal .skill-list { margin-bottom: 0; }
 
 .bottom-nav { position: fixed; z-index: 30; right: 0; bottom: 0; left: 0; height: calc(var(--nav-height) + env(safe-area-inset-bottom)); border-top: 2px solid #8e6d39; background: rgba(14, 15, 20, .96); box-shadow: 0 -9px 28px rgba(0, 0, 0, .35); backdrop-filter: blur(14px); }
@@ -237,17 +263,18 @@ h1, h2, .role-card__caption h3 { font-family: Georgia, "Songti SC", serif; }
 
 @media (max-width: 900px) {
   .card-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; }
-  .reveal-layout { grid-template-columns: minmax(250px, 340px) minmax(320px, 1fr); gap: 34px; }
+  .reveal-layout { grid-template-columns: minmax(210px, 260px) minmax(360px, 1fr); gap: 20px; }
+  .skill-panel { grid-template-columns: minmax(140px, .82fr) minmax(200px, 1.18fr); gap: 14px; padding: 18px; }
 }
 
-@media (max-height: 780px) and (min-width: 681px) {
+@media (max-height: 780px) and (min-width: 901px) {
   .draw-screen { padding-top: 20px; }
   .draw-header h1 { font-size: 39px; }
   .summon-stage { min-height: calc(100dvh - 172px); padding: 14px 0 10px; }
   .card-back { width: 225px; margin-bottom: 20px; }
   .primary-button--large { min-height: 52px; font-size: 20px; }
   .draw-hint { margin-top: 10px; }
-  .reveal-layout { grid-template-columns: 280px minmax(360px, 500px); gap: 46px; padding: 18px 0 8px; }
+  .reveal-layout { grid-template-columns: 280px minmax(560px, 650px); gap: 46px; padding: 18px 0 8px; }
   .reveal-card { width: 280px; }
   .skill-panel { padding: 19px; }
   .skill-panel .skill-list { gap: 9px; margin-bottom: 15px; }
@@ -271,11 +298,15 @@ h1, h2, .role-card__caption h3 { font-family: Georgia, "Songti SC", serif; }
   .primary-button--large { min-width: 220px; min-height: 56px; font-size: 21px; }
   .reveal-layout { display: block; min-height: 0; padding: 26px 0 16px; }
   .reveal-card { width: min(290px, 78vw); margin: 0 auto 34px; }
-  .skill-panel { padding: 20px 16px; }
+  .skill-panel { display: block; padding: 20px 16px; }
   .skill-row { grid-template-columns: 42px 1fr; gap: 10px; padding: 10px; }
   .skill-row__icon { width: 40px; height: 40px; }
   .skill-row h3 { font-size: 15px; }
   .skill-row p { font-size: 12px; }
+  .role-guide__summary { font-size: 13px; }
+  .role-guide__section li { font-size: 12px; }
+  .guide-column .role-guide { margin-top: 20px; padding-top: 20px; border-top: 2px solid rgba(103, 73, 35, .32); }
+  .reveal-actions { padding-top: 14px; }
   .library-screen { padding: 22px 14px 44px; }
   .page-header { margin-bottom: 18px; }
   .page-header h1 { font-size: 36px; }

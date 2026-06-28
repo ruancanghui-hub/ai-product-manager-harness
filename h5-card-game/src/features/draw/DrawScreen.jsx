@@ -1,9 +1,10 @@
 import { CheckCircle, Lightning, Seal, ShieldCheck, Sparkle } from "@phosphor-icons/react";
 import { RoleCard } from "../../components/RoleCard";
+import { RoleGuide } from "../../components/RoleGuide";
 
 const skillIcons = [Lightning, Sparkle, ShieldCheck];
 
-export function DrawScreen({ card, collectedCount, isCollected, onDraw, onCollect }) {
+export function DrawScreen({ card, collectedCount, isCollected, onDraw, onCollect, onOpenDetails }) {
   return (
     <section className="draw-screen">
       <header className="draw-header">
@@ -35,30 +36,37 @@ export function DrawScreen({ card, collectedCount, isCollected, onDraw, onCollec
         <div className="reveal-layout">
           <div className="reveal-card"><RoleCard card={card} /></div>
           <section className="skill-panel">
-            <p className="eyebrow">技能预览</p>
-            <div className="skill-list">
-              {card.skills.map((skill, index) => {
-                const Icon = skillIcons[index];
-                return (
-                  <article className="skill-row" key={skill.name}>
-                    <span className="skill-row__icon"><Icon size={24} weight="duotone" /></span>
-                    <div><h3>{skill.name}</h3><p>{skill.description}</p></div>
-                  </article>
-                );
-              })}
+            <div className="skills-column">
+              <p className="eyebrow">技能预览</p>
+              <div className="skill-list">
+                {card.skills.map((skill, index) => {
+                  const Icon = skillIcons[index];
+                  return (
+                    <article className="skill-row" key={skill.name}>
+                      <span className="skill-row__icon"><Icon size={24} weight="duotone" /></span>
+                      <div><h3>{skill.name}</h3><p>{skill.description}</p></div>
+                    </article>
+                  );
+                })}
+              </div>
             </div>
-            {isCollected ? (
-              <button className="primary-button is-complete" type="button" disabled>
-                <CheckCircle size={22} weight="fill" /> 已收入
-              </button>
-            ) : (
-              <button className="primary-button" type="button" onClick={() => onCollect(card)}>收入收藏</button>
-            )}
-            <button className="text-button" type="button" onClick={onDraw}>再抽一张</button>
+            <div className="guide-column">
+              <RoleGuide profile={card.profile} />
+              <button className="guide-button" type="button" onClick={onOpenDetails}>查看完整使用指南</button>
+            </div>
+            <div className="reveal-actions">
+              {isCollected ? (
+                <button className="primary-button is-complete" type="button" disabled>
+                  <CheckCircle size={22} weight="fill" /> 已收入
+                </button>
+              ) : (
+                <button className="primary-button" type="button" onClick={() => onCollect(card)}>收入收藏</button>
+              )}
+              <button className="text-button" type="button" onClick={onDraw}>再抽一张</button>
+            </div>
           </section>
         </div>
       )}
     </section>
   );
 }
-
