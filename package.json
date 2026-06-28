@@ -13,7 +13,7 @@
     "README.md"
   ],
   "scripts": {
-    "test": "node --test",
+    "test": "node --test test/*.test.js",
     "test:unit": "node --test test/*.test.js",
     "pack:check": "node --test test/pack.test.js"
   },

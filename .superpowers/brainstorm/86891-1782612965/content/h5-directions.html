@@ -1,0 +1,46 @@
+<style>
+  .concept-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px;margin-top:24px;align-items:start}
+  .concept{border:2px solid #e3ded3;border-radius:22px;overflow:hidden;background:#fff;cursor:pointer;box-shadow:0 12px 34px rgba(31,25,18,.12);transition:.2s}
+  .concept:hover{transform:translateY(-5px);box-shadow:0 20px 45px rgba(31,25,18,.18)}
+  .concept.selected{border-color:#9a5cff;box-shadow:0 0 0 5px rgba(154,92,255,.16),0 20px 45px rgba(31,25,18,.18)}
+  .concept img{display:block;width:100%;aspect-ratio:390/844;object-fit:cover;background:#171225}
+  .concept-body{padding:17px 18px 20px}.concept-body h3{margin:0 0 7px}.concept-body p{margin:0;color:#69645d;line-height:1.5;font-size:14px}
+  .tag{display:inline-block;margin-top:12px;border-radius:999px;padding:5px 10px;background:#f1ebff;color:#6841bf;font-weight:700;font-size:12px}
+  .tradeoff{margin-top:8px;font-size:12px;color:#8a8278}
+  @media(max-width:960px){.concept-grid{grid-template-columns:1fr}.concept{max-width:440px;margin:auto}}
+</style>
+
+<h2>ai-pm 角色卡牌：选择首版视觉方向</h2>
+<p class="subtitle">三套都保留“抽卡 / 收藏 / 技能包”，但第一屏的产品重心不同。点击一张即可选择。</p>
+
+<div class="concept-grid">
+  <div class="concept" data-choice="1" onclick="toggleSelect(this)">
+    <img src="concept-1-summoning-altar.png" alt="召唤祭坛方向">
+    <div class="concept-body">
+      <h3>1 · 召唤祭坛</h3>
+      <p>把抽卡的仪式感放在第一位；翻牌后立刻展开岗位技能，最像“小游戏”。</p>
+      <div class="tradeoff">收藏和团队分布藏在后续页面。</div>
+      <span class="tag">推荐：首页</span>
+    </div>
+  </div>
+  <div class="concept" data-choice="2" onclick="toggleSelect(this)">
+    <img src="concept-2-role-codex.png" alt="职业图鉴方向">
+    <div class="concept-body">
+      <h3>2 · 职业图鉴</h3>
+      <p>直接展示卡牌库、团队筛选和技能入口；信息最清楚，也最接近炉石卡牌库。</p>
+      <div class="tradeoff">抽卡惊喜感较弱，更像产品工具。</div>
+      <span class="tag">推荐：技能包页</span>
+    </div>
+  </div>
+  <div class="concept" data-choice="3" onclick="toggleSelect(this)">
+    <img src="concept-3-team-map.png" alt="七队星图方向">
+    <div class="concept-body">
+      <h3>3 · 七队星图</h3>
+      <p>用 7 个团队岛讲完整 APP 流水线；可选择团队定向抽卡，世界观最强。</p>
+      <div class="tradeoff">第一屏学习成本更高，交互实现也更重。</div>
+      <span class="tag">推荐：团队总览</span>
+    </div>
+  </div>
+</div>
+
+<p class="subtitle" style="margin-top:20px">我的建议：以 1 做抽卡首页、以 2 做技能包页，3 的团队星图只保留为技能包顶部总览。</p>

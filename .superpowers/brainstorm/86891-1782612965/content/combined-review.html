@@ -1,0 +1,23 @@
+<style>
+  .hero{max-width:1200px;margin:18px auto 0;border-radius:24px;overflow:hidden;border:2px solid #d8c9a6;box-shadow:0 24px 60px rgba(24,18,35,.2);background:#161126}
+  .hero img{display:block;width:100%;height:auto}
+  .decision{max-width:920px;margin:22px auto 0;display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+  .decision .item{padding:14px 16px;border-radius:14px;background:#f7f3e8;border:1px solid #e1d5ba}
+  .decision strong{display:block;margin-bottom:5px;color:#3b2b21}.decision span{font-size:13px;color:#776a5d;line-height:1.45}
+  .approve{max-width:420px;margin:22px auto 0;text-align:center;border:2px solid #8b5ee8;border-radius:16px;padding:15px;cursor:pointer;background:#f5f0ff;color:#5f3bb5;font-weight:800}
+  .approve.selected{box-shadow:0 0 0 5px rgba(139,94,232,.16)}
+  @media(max-width:800px){.decision{grid-template-columns:1fr}}
+</style>
+
+<h2>推荐组合 · 统一视觉总稿</h2>
+<p class="subtitle">左：召唤祭坛；中：翻牌揭示岗位技能；右：技能包与团队分布。三者已统一卡框、材质、色彩和底部导航。</p>
+
+<div class="hero"><img src="combined-system-target.png" alt="ai-pm H5 三状态统一设计"></div>
+
+<div class="decision">
+  <div class="item"><strong>抽卡</strong><span>一张卡包、一个主动作，突出仪式感。</span></div>
+  <div class="item"><strong>翻牌</strong><span>显示角色、岗位、团队与三项核心技能，可直接收藏。</span></div>
+  <div class="item"><strong>技能包</strong><span>7 个团队分布、筛选搜索和 43 张卡牌图鉴。</span></div>
+</div>
+
+<div class="approve" data-choice="approved" onclick="toggleSelect(this)">确认该设计并进入开发</div>

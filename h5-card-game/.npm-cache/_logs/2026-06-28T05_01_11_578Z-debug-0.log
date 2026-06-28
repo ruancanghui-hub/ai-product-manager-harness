@@ -1,0 +1,18 @@
+0 verbose cli /usr/local/bin/node /usr/local/bin/npm
+1 info using npm@11.12.1
+2 info using node@v24.15.0
+3 silly config load:file:/usr/local/lib/node_modules/npm/npmrc
+4 silly config load:file:/Users/nightelf/Documents/work/12_ai_pm2/h5-card-game/.npmrc
+5 silly config load:file:/Users/nightelf/.npmrc
+6 silly config load:file:/usr/local/etc/npmrc
+7 verbose title npm test --reporter=verbose
+8 verbose argv "test" "--" "--reporter=verbose"
+9 verbose logfile logs-max:10 dir:/Users/nightelf/Documents/work/12_ai_pm2/h5-card-game/.npm-cache/_logs/2026-06-28T05_01_11_578Z-
+10 verbose logfile /Users/nightelf/Documents/work/12_ai_pm2/h5-card-game/.npm-cache/_logs/2026-06-28T05_01_11_578Z-debug-0.log
+11 silly logfile done cleaning log files
+12 verbose cwd /Users/nightelf/Documents/work/12_ai_pm2/h5-card-game
+13 verbose os Darwin 25.5.0
+14 verbose node v24.15.0
+15 verbose npm  v11.12.1
+16 verbose exit 0
+17 info ok
