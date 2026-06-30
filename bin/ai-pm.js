@@ -1,5 +1,9 @@
 #!/usr/bin/env node
 
+/**
+ * AI PM CLI - 自进化的AI产品管理脚手架
+ */
+
 import { main } from '../src/main.js';
 
 try {

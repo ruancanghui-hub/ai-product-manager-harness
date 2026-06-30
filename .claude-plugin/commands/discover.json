@@ -1,0 +1,77 @@
+{
+  "name": "discover",
+  "description": "产品发现全流程——从创意到验证的完整方法论链",
+  "version": "1.0.0",
+  "chain": [
+    {
+      "step": 1,
+      "method": "brainstorm-ideas",
+      "description": "从 PM、Designer、Engineer 三视角发散创意",
+      "requiredInput": ["产品背景", "目标用户"],
+      "outputToNext": ["创意清单"],
+      "timeEstimate": "30-60 分钟"
+    },
+    {
+      "step": 2,
+      "method": "identify-assumptions",
+      "description": "识别创意背后的风险假设",
+      "requiredInput": ["创意清单（来自步骤 1）"],
+      "outputToNext": ["假设清单", "风险评级"],
+      "timeEstimate": "20-30 分钟"
+    },
+    {
+      "step": 3,
+      "method": "prioritize-assumptions",
+      "description": "按风险和不确定性优先级排序假设",
+      "requiredInput": ["假设清单（来自步骤 2）"],
+      "outputToNext": ["优先验证假设"],
+      "timeEstimate": "15-20 分钟"
+    },
+    {
+      "step": 4,
+      "method": "interview-script",
+      "description": "准备用户访谈脚本",
+      "requiredInput": ["优先假设（来自步骤 3）"],
+      "outputToNext": ["访谈脚本"],
+      "timeEstimate": "20-30 分钟"
+    },
+    {
+      "step": 5,
+      "method": "brainstorm-experiments",
+      "description": "为优先假设设计低成本验证实验",
+      "requiredInput": ["优先假设（来自步骤 3）", "访谈发现（可选）"],
+      "outputToNext": ["实验方案清单"],
+      "timeEstimate": "30-45 分钟"
+    }
+  ],
+  "totalTime": "2-3 小时",
+  "skill": "pm-center",
+  "nextSteps": [
+    {
+      "condition": "发现明确的产品机会",
+      "command": "/ship",
+      "description": "进入交付流程"
+    },
+    {
+      "condition": "需要战略对齐",
+      "command": "/strategize",
+      "description": "先制定战略再发现"
+    },
+    {
+      "condition": "发现增长机会",
+      "command": "/grow",
+      "description": "进入增长规划"
+    }
+  ],
+  "successIndicators": [
+    "识别出 ≥10 个创意",
+    "识别出 ≥15 个假设",
+    "确定了 3-5 个优先验证假设",
+    "设计了 2-3 个验证实验"
+  ],
+  "pitfalls": [
+    "过早收敛：只探索 1-2 个创意就急于确定方案",
+    "跳过假设识别：直接进入开发，导致返工",
+    "验证成本过高：实验设计复杂，失去快速验证的意义"
+  ]
+}

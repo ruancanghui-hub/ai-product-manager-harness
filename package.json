@@ -1,7 +1,7 @@
 {
   "name": "ai-pm",
-  "version": "0.1.0",
-  "description": "Cross-agent APP product development skills for Claude Code, Codex, and Cursor",
+  "version": "0.2.0",
+  "description": "自进化的 AI 产品管理脚手架——融合角色流水线与 PM 方法论",
   "type": "module",
   "bin": {
     "ai-pm": "bin/ai-pm.js"
@@ -9,16 +9,33 @@
   "files": [
     "bin",
     "src",
+    "cli",
+    "core",
+    "methods",
     "package",
     "README.md"
   ],
   "scripts": {
     "test": "node --test",
     "test:unit": "node --test test/*.test.js",
-    "pack:check": "node --test test/pack.test.js"
+    "pack:check": "node --test test/pack.test.js",
+    "evolve": "node cli/commands/evolve.js",
+    "learn": "node cli/commands/learn.js",
+    "recommend": "node cli/commands/recommend.js"
   },
   "engines": {
     "node": ">=20"
   },
+  "keywords": [
+    "ai",
+    "product-management",
+    "pm",
+    "claude",
+    "codex",
+    "cursor",
+    "skills",
+    "evolution",
+    "methodology"
+  ],
   "license": "MIT"
 }

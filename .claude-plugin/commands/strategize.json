@@ -1,0 +1,70 @@
+{
+  "name": "strategize",
+  "description": "战略规划全流程——从商业模式到产品战略的完整方法论链",
+  "version": "1.0.0",
+  "chain": [
+    {
+      "step": 1,
+      "method": "business-model-canvas",
+      "description": "使用商业模式画布梳理商业逻辑",
+      "requiredInput": ["产品想法", "目标市场"],
+      "outputToNext": ["商业模式画布"],
+      "timeEstimate": "45-60 分钟"
+    },
+    {
+      "step": 2,
+      "method": "swot-analysis",
+      "description": "分析优势、劣势、机会、威胁",
+      "requiredInput": ["商业模式画布（来自步骤 1）"],
+      "outputToNext": ["SWOT 分析结果"],
+      "timeEstimate": "30-45 分钟"
+    },
+    {
+      "step": 3,
+      "method": "value-proposition",
+      "description": "使用 JTBD 框架明确价值主张",
+      "requiredInput": ["SWOT 分析（来自步骤 2）", "目标用户"],
+      "outputToNext": ["价值主张陈述"],
+      "timeEstimate": "30-45 分钟"
+    },
+    {
+      "step": 4,
+      "method": "product-strategy",
+      "description": "制定 9 段式产品战略",
+      "requiredInput": ["商业模式（步骤 1）", "SWOT（步骤 2）", "价值主张（步骤 3）"],
+      "outputToNext": ["产品战略文档"],
+      "timeEstimate": "60-90 分钟"
+    }
+  ],
+  "totalTime": "3-4 小时",
+  "skill": "pm-center",
+  "nextSteps": [
+    {
+      "condition": "战略明确，需要探索具体功能",
+      "command": "/discover",
+      "description": "进入产品发现流程"
+    },
+    {
+      "condition": "战略已验证，准备开发",
+      "command": "/ship",
+      "description": "进入交付流程"
+    },
+    {
+      "condition": "需要团队对齐和资源规划",
+      "command": "/plan",
+      "description": "进入迭代规划"
+    }
+  ],
+  "successIndicators": [
+    "商业模式 9 个模块全部填写完整",
+    "识别出 3-5 个关键优势和劣势",
+    "价值主张清晰：谁、为什么、在什么场景、用什么、解决什么",
+    "产品战略覆盖：愿景、用户、价值、权衡、指标、增长、能力、防御"
+  ],
+  "pitfalls": [
+    "商业模式画布流于表面：每个模块只有 1-2 条，不够深入",
+    "SWOT 分析没有优先级：列出 20+ 条但没有聚焦",
+    "价值主张过于宽泛：「提供优质服务」等套话",
+    "产品战略缺乏取舍：什么都想做，没有明确不做什么"
+  ]
+}
